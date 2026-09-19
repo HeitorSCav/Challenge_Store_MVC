@@ -10,6 +10,7 @@ class PaymentController:
     def set_method(self, payment: Payment) -> None:
         self._payment = payment
 
+    # Solicita ao usuário que escolha um método de pagamento e processa o pagamento
     def prompt_method(self, amount: float) -> None:
         self._view.show_total(amount)
         self._view.show_methods()
@@ -24,6 +25,7 @@ class PaymentController:
             key = input("  Pix key: ")
             self.set_method(Pix(key))
 
+    # Processa o pagamento de um pedido específico, verificando se o método de pagamento foi definido
     def process(self, order: "Order") -> Receipt:
         if not self._payment:
             raise ValueError("No payment method set")

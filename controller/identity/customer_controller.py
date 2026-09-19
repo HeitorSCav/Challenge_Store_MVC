@@ -6,6 +6,7 @@ class CustomerController:
         self._customers: list[Customer] = []
         self._view = view
 
+    # Registra um novo cliente
     def register(self) -> Customer:
         data = self._view.prompt_data()
         address = Address(data["street"], data["city"], data["zip_code"])
@@ -20,6 +21,7 @@ class CustomerController:
         self._view.show(customer)
         return customer
 
+    # Encontra um cliente pelo ID e exibe suas informações
     def find(self, customer_id: str) -> Customer | None:
         for c in self._customers:
             if c.customer_id == customer_id:
@@ -27,5 +29,6 @@ class CustomerController:
                 return c
         return None
 
+    # Lista todos os clientes registrados
     def list_all(self) -> None:
         self._view.show_list(self._customers)

@@ -13,9 +13,11 @@ class Shelf:
     def items(self):
         return list(self._items)
 
+    # Adiciona um item de estoque à prateleira
     def add_item(self, item: StockItem) -> None:
         self._items.append(item)
 
+    # Encontra um item de estoque na prateleira com base no SKU do produto
     def find(self, sku: str) -> StockItem | None:
         for item in self._items:
             if str(item.product.sku) == sku:
@@ -42,9 +44,11 @@ class Aisle:
     def shelves(self):
         return list(self._shelves)
 
+    # Adiciona uma prateleira ao corredor
     def add_shelf(self, shelf: Shelf) -> None:
         self._shelves.append(shelf)
 
+    # Encontra um item de estoque em qualquer prateleira do corredor com base no SKU do produto 
     def find(self, sku: str) -> StockItem | None:
         for shelf in self._shelves:
             item = shelf.find(sku)

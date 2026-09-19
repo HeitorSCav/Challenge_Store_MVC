@@ -8,6 +8,7 @@ class OrderStatus(Enum):
     FULFILLED = 1
     
 class Order:
+    # Define as transições de status do pedido
     _TRANSITIONS = {
         OrderStatus.PENDING:   OrderStatus.PAID,
         OrderStatus.PAID:      OrderStatus.FULFILLED,
@@ -15,7 +16,7 @@ class Order:
     }
 
     def __init__(self, cart: Cart):
-        self._order_id = str(uuid4())[:8]
+        self._order_id = str(uuid4())[:8]  # uuid4() gera um identificador único, mas vamos encurtá-lo para 8 caracteres
         self._customer = cart.customer
         self._items = list(cart.items)
         self._status = OrderStatus.PENDING
@@ -32,9 +33,11 @@ class Order:
     def items(self):
         return list(self._items)
 
+    # Calcula o total do pedido somando os subtotais de todos os itens
     def total(self) -> float:
         return sum(i.subtotal() for i in self._items)
 
+    # Avança o status do pedido para o próximo estado definido na transição
     def advance_status(self) -> None:
         next_status = self._TRANSITIONS[self._status]
         self._status = next_status

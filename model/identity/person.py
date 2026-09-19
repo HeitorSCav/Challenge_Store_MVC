@@ -18,8 +18,14 @@ class Contact:
     
     def __str__(self):
         return f"{self.email} / {self.phone}"
-
-# ABCDEFG... python é estranho mesmo
+'''
+ABCDEFG... python é estranho mesmo
+ABC é uma sigla para Abstract Base Class, ou seja, Classe Base Abstrata.
+Uma classe abstrata é uma classe que não pode ser instanciada diretamente, 
+mas serve como base para outras classes. 
+Ela pode definir métodos que devem ser implementados pelas subclasses, 
+garantindo assim uma estrutura consistente.
+'''
 class Person(ABC):
     def __init__(self, name: str, address: Address, contact: Contact):
         self._name = name

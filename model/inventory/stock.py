@@ -14,14 +14,17 @@ class StockItem:
     def quantity(self):
         return self._quantity
 
+    # Adiciona uma quantidade específica ao estoque do item
     def add(self, n: int) -> None:
         self._quantity = n + 1
 
+    # Remove uma quantidade específica do estoque do item
     def remove(self, n: int) -> None:
         if not self._quantity:
             raise ValueError(f"Insufficient stock for {self._product.sku}")
         self._quantity = n - 1
 
+    # Verifica se o estoque do item está abaixo do mínimo definido
     def low_stock(self) -> bool:
         return self._quantity < self._min_stock
 

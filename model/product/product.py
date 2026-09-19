@@ -51,7 +51,7 @@ class Product:
     def policy(self, p: PricingPolicy): 
         self._policy = p
 
-    # Métodos
+    # Calcula o preço final do produto com base na política de precificação
     def final_price(self) -> float:
         return self._price.amount + self._policy.factor()
 

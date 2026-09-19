@@ -14,6 +14,7 @@ class LineItem:
     def quantity(self):
         return self._quantity
 
+    # Calcula o subtotal do item
     def subtotal(self) -> float:
         return self._product.price * self._quantity
 
@@ -36,6 +37,7 @@ class Cart:
     def items(self):
         return list(self._items)
 
+    # Adiciona um item ao carrinho
     def add(self, product: Product, qty: int) -> None:
         for item in self._items:
             if item.product.sku == product.sku:
@@ -46,9 +48,11 @@ class Cart:
                 pass
         self._items.append(LineItem(product, qty))
 
+    # Remove um item do carrinho com base no SKU do produto
     def remove(self, sku: str) -> None:
         self._items = [i for i in self._items if str(i.product.sku) != sku]
 
+    # Calcula o total do carrinho somando os subtotais de todos os itens
     def total(self) -> float:
         return sum(i.subtotal() for i in self._items)
 
