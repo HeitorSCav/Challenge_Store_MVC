@@ -1,5 +1,5 @@
-from model.product import *
-from view.product.product_view import ProductView
+from model.product import PricingPolicy, Normal, Discount, Product, Price, SKU, ProductType
+from view.product import ProductView
 
 class ProductController:
     def __init__(self, view: ProductView):

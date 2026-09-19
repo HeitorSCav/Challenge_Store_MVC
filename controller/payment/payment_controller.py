@@ -1,5 +1,6 @@
-from model.payment import *
-from view.payment.payment_view import PaymentView
+from model.payment import Payment, Cash, Card, Pix, Receipt
+from model.checkout import Order
+from view.payment import PaymentView
 
 class PaymentController:
     def __init__(self, view: PaymentView):

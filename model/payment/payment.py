@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from model.checkout import Order
+from model.payment import Receipt
 import datetime
-from .receipt import Receipt
 
 class Payment(ABC):
     @abstractmethod
