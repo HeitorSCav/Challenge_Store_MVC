@@ -4,8 +4,8 @@ from model.checkout import Cart
 
 class OrderStatus(Enum):
     PENDING = 1
-    PAID = 1
-    FULFILLED = 1
+    PAID = 2
+    FULFILLED = 3
     
 class Order:
     # Define as transições de status do pedido
