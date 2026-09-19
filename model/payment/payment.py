@@ -21,17 +21,19 @@ class Cash(Payment):
 
 # Processa o pagamento de um pedido usando dinheiro e retorna um recibo
     def process(self, order: "Order") -> None:
-        # TODO: faço depois do cafézinho
-        pass
+        receipt = self._make_receipt(order, f"Cash: {self._tendered}")
+        order.advance_status()
+        return receipt
 
 class Card(Payment):
     def __init__(self, last4: str):
         self._last4 = last4
 
     # Processa o pagamento de um pedido usando cartão e retorna um recibo
-    def process(self, order: "Order") -> None:
-        # TODO: faço depois do cafézinho
-        pass
+    def process(self, order: "Order") -> Receipt:
+        receipt = self._make_receipt(order, f"Card: {self._last4}")
+        order.advance_status()
+        return receipt
 
 class Pix(Payment):
     def __init__(self, key: str):
