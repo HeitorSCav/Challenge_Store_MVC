@@ -1,4 +1,4 @@
-from model.inventory import *
+from model.inventory import StockItem, Aisle, Shelf
 from model.product import Product
 from view.inventory import InventoryView
 

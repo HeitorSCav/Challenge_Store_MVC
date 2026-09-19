@@ -23,7 +23,6 @@ class CheckoutController:
     # Confirma o pedido, mostrando o carrinho e solicitando confirmação do cliente. 
     def confirm(self) -> Order | None:
         self._view.show_cart(self._cart)
-        self._view.show_cart(self._cart)
         if self._view.confirm_prompt():
             print("Obrigado por comprar conosco!") 
             order = Order(self._cart)
