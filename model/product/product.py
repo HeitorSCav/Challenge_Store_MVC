@@ -19,7 +19,7 @@ class SKU:
     def __str__(self):
         return self.code
 
-@dataclass
+@dataclass()
 class Price:
     amount: float
 
