@@ -5,14 +5,29 @@ from model.product import ProductType, PricingPolicy, Normal, Discount
 @dataclass()
 class SKU:
     code: str
-    
+
+    @property
+    def code(self):
+        return self._code
+
+    # Valida o SKU, garantindo que não seja vazio ou apenas espaços em branco
+    def __post_init__(self):
+        if not self.code or not self.code.strip():
+            raise ValueError("Error! SKU missing")
+        self.code = self.code.strip()
+
     def __str__(self):
         return self.code
 
-@dataclass()
+@dataclass
 class Price:
     amount: float
-    
+
+    # Valida o Price, garantindo que não seja negativo ou zero
+    def __post_init__(self):
+        if self.amount <= 0:
+            raise ValueError("Error! Invalid price")
+
     def __str__(self):
         return f"R$ {self.amount:.2f}"
     
